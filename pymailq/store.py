@@ -425,7 +425,7 @@ class PostqueueStore(object):
         stdout = child.communicate()[0]
 
         # return lines list without the headers and footers
-        return [line.strip() for line in stdout.decode().split('\n')][1:-2]
+        return [line.strip() for line in stdout.decode('utf-8', errors='replace').split('\n')][1:-2]
 
     def _is_mail_id(self, mail_id):
         """
